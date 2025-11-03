@@ -1,0 +1,42 @@
+---
+const habilidades = [
+  "HTML, CSS, JavaScript",
+  "Astro, React, TailwindCSS",
+  "Diseño web responsivo",
+  "Trabajo en equipo y comunicación",
+  "Aprendizaje continuo",
+];
+
+const gustos = [
+  "Música electrónica",
+  "Café",
+  "Videojuegos",
+  "Tecnología e innovación",
+  "Naturaleza y fotografía",
+];
+---
+
+<section id="habilidades" class="bg-gray-900 py-20 px-8 text-gray-100">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-semibold text-center text-blue-400 mb-10">Habilidades & Gustos</h2>
+    <div class="grid md:grid-cols-2 gap-10">
+      <div>
+        <h3 class="text-2xl mb-4 text-gray-200">Habilidades</h3>
+        <ul class="space-y-2">
+          {habilidades.map((item) => (
+            <li class="bg-gray-800 px-4 py-2 rounded-lg shadow-sm hover:bg-gray-700 transition">{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-2xl mb-4 text-gray-200">Gustos</h3>
+        <ul class="space-y-2">
+          {gustos.map((item) => (
+            <li class="bg-gray-800 px-4 py-2 rounded-lg shadow-sm hover:bg-gray-700 transition">{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
