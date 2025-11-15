@@ -1,0 +1,73 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/templates/Menu.astro";
+
+const imagenes = [
+  "/src/assets/galeria/1.jpg",
+  "/src/assets/galeria/2.jpg",
+  "/src/assets/galeria/3.jpg",
+  "/src/assets/galeria/4.jpg",
+  "/src/assets/galeria/5.jpg",
+  "/src/assets/galeria/6.jpg",
+  "/src/assets/galeria/7.jpg",
+  "/src/assets/galeria/8.jpg",
+  "/src/assets/galeria/img9.jpg",
+  "/src/assets/galeria/img10.jpg",
+  "/src/assets/galeria/img11.jpg",
+  "/src/assets/galeria/img12.jpg",
+  "/src/assets/galeria/img13.jpg",
+  "/src/assets/galeria/img14.jpg",
+  "/src/assets/galeria/img15.jpg",
+  "/src/assets/galeria/img16.jpg",
+  "/src/assets/galeria/img1.jpg",
+  "/src/assets/galeria/img2.jpg",
+  "/src/assets/galeria/img3.jpg",
+  "/src/assets/galeria/img4.jpg",
+  "/src/assets/galeria/img5.jpg",
+  "/src/assets/galeria/img6.jpg",
+  "/src/assets/galeria/img7.jpg",
+  "/src/assets/galeria/img8.jpg",
+  "/src/assets/galeria/9.jpg",
+  "/src/assets/galeria/10.jpg",
+  "/src/assets/galeria/11.jpg",
+  "/src/assets/galeria/12.jpg",
+  "/src/assets/galeria/13.jpg",
+  "/src/assets/galeria/14.jpg",
+  "/src/assets/galeria/15.jpg",
+  "/src/assets/galeria/16.jpg",
+];
+---
+
+<div class="bg-gray-950 text-gray-100 font-sans min-h-screen">
+
+  <!-- NAVBAR -->
+  <Navbar />
+  <main class="pt-32 px-6">
+
+    <h1 class="text-center text-4xl font-bold text-blue-400 mb-10">
+      Contenido visual personal
+    </h1>
+
+    <!-- GRID 4 columnas × 8 filas -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+
+      {imagenes.map((img) => (
+        <div class="overflow-hidden rounded-xl shadow-lg group">
+          
+          <img 
+            src={img} 
+            alt="Imagen" 
+            class="w-full h-50  object-cover transition-transform duration-500 group-hover:scale-120 group-hover:brightness-113"
+          />
+        </div>
+      ))}
+
+    </div>
+
+  </main>
+
+</div>
+
+<footer class="bg-gray-900 py-6 text-center text-gray-500 text-sm">
+  © {new Date().getFullYear()} Rodolfo Cruz Ibarra - Todos los derechos reservados.
+</footer>

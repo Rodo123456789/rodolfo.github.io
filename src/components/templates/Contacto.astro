@@ -1,21 +1,104 @@
 ---
 const contacto = {
-  correo: "rodolfo@example.com",
-  telefono: "+52 55 1234 5678",
-  linkedin: "https://linkedin.com/in/rodolfocruz",
-  github: "https://github.com/rodolfocruz",
+  ubicacion: "Tres Estrellas, San Felipe del Progreso, México",
+  correo: "rodolfocruzibarra@gmail.com",
+  telefono: "56-15-26-34-26",
+  github: "https://github.com/Rodo123456789",
+};
+
+const redes = [
+  {
+    nombre: "Facebook",
+    url: "https://www.facebook.com/share/1A5WZCHwze/",
+    img: "/src/assets/iconos/facebook.webp",
+  },
+  {
+    nombre: "WhatsApp",
+    url: "https://wa.me/5215615263426",
+    img: "/src/assets/iconos/whatsapp.webp",
+  },
+  {
+    nombre: "TikTok",
+    url: "https://www.tiktok.com/@rodo_tv?_r=1&_t=ZS-91QZTuW8gKK",
+    img: "/src/assets/iconos/ticktok.jpeg",
+  },
+  {
+    nombre: "YouTube",
+    url: "https://www.youtube.com/@rodotv8630",
+    img: "/src/assets/iconos/youtube.png",
+  },
+];
+
+
+const icons = {
+  ubicacion: "/src/assets/iconos/ubicacion.webp",
+  correo: "/src/assets/iconos/gmail.webp",
+  telefono: "/src/assets/iconos/telefono.webp",
+  github: "/src/assets/iconos/github.webp",
 };
 ---
 
-<section id="contacto" class="bg-gray-950 py-20 px-8 text-gray-100">
-  <div class="max-w-4xl mx-auto text-center space-y-6">
-    <h2 class="text-3xl font-semibold text-blue-400">Contacto</h2>
-    <p>Puedes contactarme a través de los siguientes medios:</p>
-    <div class="space-y-2">
-      <p><strong>Correo:</strong> {contacto.correo}</p>
-      <p><strong>Teléfono:</strong> {contacto.telefono}</p>
-      <p><strong>LinkedIn:</strong> <a href={contacto.linkedin} class="text-blue-400 hover:underline">{contacto.linkedin}</a></p>
-      <p><strong>GitHub:</strong> <a href={contacto.github} class="text-blue-400 hover:underline">{contacto.github}</a></p>
+<section id="contacto" class="bg-gray-950 py-5 px-8 text-gray-100">
+
+  <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-50">
+
+    <div class="text-left space-y-6">
+      <h2 class="text-3xl font-semibold text-blue-400">Contacto</h2>
+
+      <ul class="space-y-4">
+
+  
+        <li class="flex items-center space-x-4">
+          <img src={icons.ubicacion} class="w-12 h-12 rounded-full object-cover border-2 border-gray-700" alt="ubicacion" />
+          <span class="text-lg">{contacto.ubicacion}</span>
+        </li>
+
+      
+        <li class="flex items-center space-x-4">
+          <img src={icons.correo} class="w-12 h-12 rounded-full object-cover border-2 border-gray-700" alt="correo" />
+          <a 
+            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${contacto.correo}`} 
+            target="_blank" 
+            class="text-lg hover:text-blue-400"
+          >
+            {contacto.correo}
+          </a>
+        </li>
+
+        <li class="flex items-center space-x-4">
+          <img src={icons.telefono} class="w-12 h-12 rounded-full object-cover border-2 border-gray-700" alt="teléfono" />
+          <span class="text-lg">{contacto.telefono}</span>
+        </li>
+
+        <li class="flex items-center space-x-4">
+          <img src={icons.github} class="w-12 h-12 rounded-full object-cover border-2 border-gray-700" alt="github" />
+          <a 
+            href={contacto.github} 
+            target="_blank" 
+            class="text-lg hover:text-blue-400"
+          >
+            GitHub
+          </a>
+        </li>
+
+      </ul>
     </div>
+
+    <div class="text-left">
+      <h2 class="text-3xl font-semibold text-blue-400 mb-4">Redes Sociales</h2>
+
+      <ul class="space-y-4">
+        {redes.map((r) => (
+          <li class="flex items-center space-x-4">
+            <img src={r.img} alt={r.nombre} class="w-12 h-12 rounded-full object-cover border-2 border-gray-700"/>
+            <a href={r.url} target="_blank" class="text-lg hover:text-blue-400">
+              {r.nombre}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
   </div>
+
 </section>
