@@ -18,7 +18,6 @@
 
   </div>
 
-
   <div class="md:w-2/3 text-center md:text-left space-y-6 mt-20">
 
     <h3 class="text-4xl font-semibold text-blue-400">Sobre mí</h3>
@@ -36,58 +35,76 @@
       en la Universidad Mexiquense del Bicentenario, en San José del Rincón. 
     </p>
 
-    
+
     <div class="relative w-full max-w-[600px] mx-auto overflow-hidden rounded-xl shadow-lg">
       
-      <div 
-        id="carousel"
-        class="flex transition-transform duration-700 ease-in-out"
-        style="width: calc(100% * 4);" 
-      >
-      
-        <img 
-          src="/src/assets/info/jetta.avif"
-          class="w-full h-[300px] object-cover"
-          alt="Jetta"
-        />
+      <div id="carousel" class="flex">
+        
+        <div class="flex-none w-full h-[300px]">
+          <img src="/src/assets/info/jetta.avif" class="w-full h-full object-cover" alt="Jetta" />
+        </div>
 
-        <img 
-          src="/src/assets/info/umb.jpg"
-          class="w-full h-[300px] object-cover"
-          alt="UMB"
-        />
+        <div class="flex-none w-full h-[300px]">
+          <img src="/src/assets/info/umb.jpg" class="w-full h-full object-cover" alt="UMB" />
+        </div>
 
-        <img 
-          src="/src/assets/info/akron.jpg"
-          class="w-full h-[300px] object-cover"
-          alt="AKRON"
-        />
+        <div class="flex-none w-full h-[300px]">
+          <img src="/src/assets/info/akron.jpg" class="w-full h-full object-cover" alt="AKRON" />
+        </div>
 
-        <img 
-          src="/src/assets/info/juego.jpg"
-          class="w-full h-[300px] object-cover"
-          alt="Juegos"
-        />
+        <div class="flex-none w-full h-[300px]">
+          <img src="/src/assets/info/juego.jpg" class="w-full h-full object-cover" alt="Juegos" />
+        </div>
+
       </div>
-
     </div>
 
     <script is:raw>
-      document.addEventListener('DOMContentLoaded', function () {
-      let index = 0;
-      const total = 4;
-      const carusel = document.getElementById("carousel");
-      if (!carusel) return; 
+      document.addEventListener("DOMContentLoaded", () => {
+        const carousel = document.getElementById("carousel");
+        if (!carousel) return;
 
-      const percentPer = 100 / total;
+        const wrapper = carousel.parentElement;
 
-      setInterval(() => {
-        index = (index + 1) % total;
-        carusel.style.transform = 'translateX(-' + (index * percentPer) + '%)';
-      }, 4000); 
-    });
-    </script>
+        function getValidWidth(callback) {
+          let w = wrapper.clientWidth;
+          if (w > 0) {
+            callback(w);
+          } else {
+            // Reintentar hasta que tenga ancho (necesario en Astro/Tailwind)
+            setTimeout(() => getValidWidth(callback), 50);
+          }
+        }
 
+        getValidWidth((slideWidth) => {
+          let slidesCount = carousel.children.length;
+
+          // Clonamos la primera imagen
+          const firstClone = carousel.children[0].cloneNode(true);
+          carousel.appendChild(firstClone);
+
+          let index = 0;
+          const transitionTime = 700;
+          const delay = 4000;
+
+          function move() {
+            index++;
+            carousel.style.transition = `transform ${transitionTime}ms ease-in-out`;
+            carousel.style.transform = `translateX(-${index * slideWidth}px)`;
+
+            if (index === slidesCount) {
+              setTimeout(() => {
+                carousel.style.transition = "none";
+                carousel.style.transform = `translateX(0px)`;
+                index = 0;
+              }, transitionTime);
+            }
+          }
+
+          setInterval(move, delay);
+        });
+      });
+      </script>
 
     <p class="text-justify">
       Mis metas a futuro son culminar mis estudios, conseguir trabajos que me ayuden en mi desarrollo profesional 
