@@ -1,0 +1,101 @@
+---
+import uno from "/src/assets/galeria/1.jpg";
+import dos from "/src/assets/galeria/2.jpg";
+import tres from "/src/assets/galeria/3.jpg";
+import cuatro from "/src/assets/galeria/4.jpg";
+import cinco from "/src/assets/galeria/5.jpg";
+import seis from "/src/assets/galeria/6.jpg";
+import siete from "/src/assets/galeria/7.jpg";
+import ocho from "/src/assets/galeria/8.jpg";
+import img9 from "/src/assets/galeria/img9.jpg";
+import img10 from "/src/assets/galeria/img10.jpg";
+import img11 from "/src/assets/galeria/img11.jpg";
+import img12 from "/src/assets/galeria/img12.jpg";
+import img13 from "/src/assets/galeria/img13.jpg";
+import img14 from "/src/assets/galeria/img14.jpg";
+import img15 from "/src/assets/galeria/img15.jpg";
+import img16 from "/src/assets/galeria/img16.jpg";
+import img1 from "/src/assets/galeria/img1.jpg";
+import img2 from "/src/assets/galeria/img2.jpg";
+import img3 from "/src/assets/galeria/img3.jpg";
+import img4 from "/src/assets/galeria/img4.jpg";
+import img5 from "/src/assets/galeria/img5.jpg";
+import img6 from "/src/assets/galeria/img6.jpg";
+import img7 from "/src/assets/galeria/img7.jpg";
+import img8 from "/src/assets/galeria/img8.jpg";
+import nueve from "/src/assets/galeria/9.jpg";
+import diez from "/src/assets/galeria/10.jpg";
+import once from "/src/assets/galeria/11.jpg";
+import doce from "/src/assets/galeria/12.jpg";
+import trece from "/src/assets/galeria/13.jpg";
+import catorce from "/src/assets/galeria/14.jpg";
+import quince from "/src/assets/galeria/15.jpg";
+import dieciseis from "/src/assets/galeria/16.jpg";
+
+
+const imagenes = [
+  uno.src,
+  dos.src,
+  tres.src,
+  cuatro.src,
+  cinco.src,
+  seis.src,
+  siete.src,
+  ocho.src,
+  img9.src,
+  img10.src,
+  img11.src,
+  img12.src,
+  img13.src,
+  img14.src,
+  img15.src,
+  img16.src,
+  img1.src,
+  img2.src,
+  img3.src,
+  img4.src,
+  img5.src,
+  img6.src,
+  img7.src,
+  img8.src,
+  nueve.src,
+  diez.src,
+  once.src,
+  doce.src,
+  trece.src,
+  catorce.src,
+  quince.src,
+  dieciseis.src,
+];
+---
+
+<div class="bg-gray-950 text-gray-100 font-sans min-h-screen">
+
+  <main class="pt-32 px-6">
+
+    <h1 class="text-center text-4xl font-bold text-blue-400 mb-10">
+      Contenido visual personal
+    </h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+
+      {imagenes.map((img) => (
+        <div class="overflow-hidden rounded-xl shadow-lg group">
+          
+          <img 
+            src={img} 
+            alt="Imagen" 
+            class="w-full h-50  object-cover transition-transform duration-500 group-hover:scale-120 group-hover:brightness-113"
+          />
+        </div>
+      ))}
+
+    </div>
+
+  </main>
+
+</div>
+
+<footer class="bg-gray-900 py-6 text-center text-gray-500 text-sm">
+
+</footer>

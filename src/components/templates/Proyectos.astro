@@ -1,6 +1,8 @@
 ---
-import "../styles/global.css";
-import Navbar from "../components/templates/Menu.astro";
+import video1 from "/src/assets/videos/video1.mp4";
+import video2 from "/src/assets/videos/video2.mp4";
+import video3 from "/src/assets/videos/video3.mp4";
+import video4 from "/src/assets/videos/video4.mp4";
 
 Astro.response.headers.set("Content-Type", "text/html; charset=utf-8");
 
@@ -68,32 +70,30 @@ const proyectos = [
     nombre: "1: Juego Space-Invaders en Godot",
     descripcion: descripcion1,
     link: "https://github.com/Rodo123456789/Juego-de-Space-Invaders",
-    video: "/videos/video1.mp4"
+    video: video1
   },
   {
     nombre: "2: Juego Atrapa y Escapa en Pygame",
     descripcion: descripcion2,
     link: "https://github.com/Rodo123456789/Juego-de-Atrapa-y-Escapa",
-    video: "/videos/video2.mp4"
+    video: video2
   },
   {
     nombre: "3: Simulación de una máquina de monedas en Godot",
     descripcion: descripcion3,
     link: "https://github.com/Rodo123456789/Maqina-de-monedas",
-    video: "/videos/video3.mp4"
+    video: video3
   },
   {
     nombre: "4: Simulación de operaciones de un aeropuerto en Godot",
     descripcion: descripcion4,
     link: "https://github.com/Rodo123456789/Simulacion-de-un-aeropuerto",
-    video: "/videos/video4.mp4"
+    video: video4
   },
 ];
 ---
 
 <div class="bg-gray-950 text-gray-100 min-h-screen font-sans">
-
-  <Navbar />
 
   <main class="pt-32 px-6 max-w-6xl mx-auto">
 
@@ -139,6 +139,6 @@ const proyectos = [
 
 
 <footer class="bg-gray-900 py-6 text-center text-gray-500 text-sm mt-10">
-  © {new Date().getFullYear()} Rodolfo Cruz Ibarra - Todos los derechos reservados.
+  
 </footer>
 </div>
