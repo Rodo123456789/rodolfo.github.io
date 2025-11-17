@@ -1,10 +1,10 @@
 ---
-import video1 from "/src/assets/videos/video1.mp4";
-import video2 from "/src/assets/videos/video2.mp4";
-import video3 from "/src/assets/videos/video3.mp4";
-import video4 from "/src/assets/videos/video4.mp4";
-
 Astro.response.headers.set("Content-Type", "text/html; charset=utf-8");
+
+const videoYT1 = "8z6WAAgvAKk";
+const videoYT2 = "BNqnqvEwp48";
+const videoYT3 = "_rjOc9N7ctg";
+const videoYT4 = "mPUXBs1q7hY";
 
 const descripcion1 = `
   <p>
@@ -34,7 +34,6 @@ const descripcion2 = `
   tres cuadrados se mueven verticalmente de manera predecible y uno se mueve 
   aleatoriamente cada cierto tiempo, aumentando la dificultad. 
   </p>
-  
 `;
 
 const descripcion3 = `
@@ -70,25 +69,25 @@ const proyectos = [
     nombre: "1: Juego Space-Invaders en Godot",
     descripcion: descripcion1,
     link: "https://github.com/Rodo123456789/Juego-de-Space-Invaders",
-    video: video1
+    videoId: videoYT1
   },
   {
     nombre: "2: Juego Atrapa y Escapa en Pygame",
     descripcion: descripcion2,
     link: "https://github.com/Rodo123456789/Juego-de-Atrapa-y-Escapa",
-    video: video2
+    videoId: videoYT2
   },
   {
     nombre: "3: Simulación de una máquina de monedas en Godot",
     descripcion: descripcion3,
     link: "https://github.com/Rodo123456789/Maqina-de-monedas",
-    video: video3
+    videoId: videoYT3
   },
   {
     nombre: "4: Simulación de operaciones de un aeropuerto en Godot",
     descripcion: descripcion4,
     link: "https://github.com/Rodo123456789/Simulacion-de-un-aeropuerto",
-    video: video4
+    videoId: videoYT4
   },
 ];
 ---
@@ -100,10 +99,9 @@ const proyectos = [
     <h1 class="text-center text-4xl font-bold text-blue-400 mb-5">
       Portafolio de proyectos
     </h1>
-    
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-
+      
       {proyectos.map((p) => (
         <div class="bg-gray-900 p-7 rounded-2xl shadow-lg border border-gray-700">
 
@@ -113,20 +111,27 @@ const proyectos = [
             class="text-gray-300 mt-3 text-sm text-justify leading-relaxed space-y-4"
             set:html={p.descripcion}
           ></div>
-          
+
           <p class="mt-3 text-sm">
-            <strong class="text-blue-400">Link:</strong>  
-            <a href={p.link} class="text-blue-300 hover:underline" target="_blank">
+            <strong class="text-blue-400">Link:</strong>
+            <a
+              href={p.link}
+              class="text-blue-300 hover:underline"
+              target="_blank"
+            >
               {p.link}
             </a>
           </p>
 
+          <!-- VIDEO EMBED DE YOUTUBE -->
           <div class="mt-4">
-            <video 
-              src={p.video}
-              controls
+            <iframe
               class="w-full h-52 rounded-lg border border-gray-600"
-            ></video>
+              src={`https://www.youtube.com/embed/${p.videoId}`}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
           </div>
 
         </div>
@@ -136,9 +141,7 @@ const proyectos = [
 
   </main>
 
+  <footer class="bg-gray-900 py-6 text-center text-gray-500 text-sm mt-10">
+  </footer>
 
-
-<footer class="bg-gray-900 py-6 text-center text-gray-500 text-sm mt-10">
-  
-</footer>
 </div>
