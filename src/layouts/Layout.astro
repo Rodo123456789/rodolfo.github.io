@@ -1,9 +1,10 @@
 ---
-// src/layouts/Layout.astro
+import '../styles/global.css';
 
-import '../styles/global.css';  
-
-const { title = "Rodolfo | Portafolio", description = "Portafolio personal de Rodolfo" } = Astro.props;
+const {
+  title = "Rodolfo | Portafolio",
+  description = "Portafolio personal de Rodolfo"
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -15,6 +16,9 @@ const { title = "Rodolfo | Portafolio", description = "Portafolio personal de Ro
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
+
   <body>
-   
+    <!-- Aquí se inserta todo el contenido de la página -->
+    <slot />
+  </body>
 </html>
