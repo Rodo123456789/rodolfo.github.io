@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 
 function Label({ children }) {
   return (
@@ -11,10 +11,8 @@ function Label({ children }) {
 function Input(props) {
   return (
     <input
-      type={props.type || "text"}
       className="mt-1 block w-full rounded-lg p-3 border border-gray-300 
                  focus:border-red-500 outline-none transition-all duration-300"
-      placeholder={props.placeholder || ""}
       {...props}
     />
   );
@@ -25,8 +23,6 @@ function TextArea(props) {
     <textarea
       className="mt-1 block w-full rounded-lg p-3 border border-gray-300 
                  focus:border-red-500 outline-none transition-all duration-300"
-      placeholder={props.placeholder || ""}
-      rows={props.rows || 4}
       {...props}
     />
   );
@@ -34,62 +30,54 @@ function TextArea(props) {
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false);
+  const [responseMessage, setResponseMessage] = useState({ type: "", text: "" });
 
-  // controlados:
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const subjectRef = useRef(null);
+  const messageRef = useRef(null);
 
-  // ref para saber si componente sigue montado (evita setState en componente desmontado)
-  const mountedRef = useRef(true);
-
-  useEffect(() => {
-    mountedRef.current = true;
-    return () => {
-      mountedRef.current = false;
-    };
-  }, []);
-
-  // helper sleep
-  const sleep = (ms) => new Promise((resolve) => {
-    const id = setTimeout(() => resolve(id), ms);
-    // not storing id here, we rely on mountedRef to avoid setState after unmount
-  });
+  const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbxcpyncpjvw1mjpjU5TfaEyPIIMCYYTUhO8efVhNUKP6iFwUDcWrhsw20SnrVEB-RPuhw/exec";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("handleSubmit: inicio", { loading });
-    if (loading) {
-      console.log("handleSubmit: ya está cargando, saliendo.");
-      return;
-    }
-
     setLoading(true);
-    console.log("handleSubmit: setLoading(true)");
+    setResponseMessage({ type: "", text: "" });
 
-    // Espera 2 segundos (asegura secuencia)
-    await sleep(2000);
+    const formData = {
+      nombre: nameRef.current.value,
+      correo: emailRef.current.value,
+      asunto: subjectRef.current.value,
+      mensaje: messageRef.current.value,
+    };
 
-    // Comprueba que el componente sigue montado antes de setState
-    if (!mountedRef.current) {
-      console.warn("Componente desmontado antes de completar el timeout.");
-      return;
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      setResponseMessage({
+        type: "success",
+        text: "Mensaje enviado",
+      });
+
+      nameRef.current.value = "";
+      emailRef.current.value = "";
+      subjectRef.current.value = "";
+      messageRef.current.value = "";
+    } catch (error) {
+      setResponseMessage({
+        type: "error",
+        text: "Error al enviar el mensaje",
+      });
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
-    console.log("handleSubmit: setLoading(false) después de 2s");
-
-    // limpia los campos controlados
-    setName("");
-    setEmail("");
-    setMessage("");
-
-    console.log("handleSubmit: campos reseteados");
   };
-
-  useEffect(() => {
-    console.log("loading cambió:", loading);
-  }, [loading]);
 
   return (
     <div className="w-full flex justify-center px-4">
@@ -99,33 +87,34 @@ export default function ContactForm() {
       >
         <h2 className="text-2xl font-bold text-center mb-6">Contáctame</h2>
 
-        <fieldset className="w-full flex flex-col gap-4" disabled={loading}>
+        <fieldset disabled={loading} className="flex flex-col gap-4">
           <div>
             <Label>Nombre</Label>
-            <Input
-              placeholder="Tu nombre"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <Input ref={nameRef} placeholder="Tu nombre" required />
           </div>
 
           <div>
             <Label>Correo</Label>
             <Input
+              ref={emailRef}
               type="email"
               placeholder="Tu correo"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              required
             />
+          </div>
+
+          <div>
+            <Label>Asunto</Label>
+            <Input ref={subjectRef} placeholder="Asunto" required />
           </div>
 
           <div>
             <Label>Mensaje</Label>
             <TextArea
-              placeholder="Escribe tu mensaje"
+              ref={messageRef}
               rows={6}
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Escribe tu mensaje"
+              required
             />
           </div>
         </fieldset>
@@ -134,10 +123,26 @@ export default function ContactForm() {
           type="submit"
           disabled={loading}
           className={`mt-6 w-full text-white py-3 rounded-lg transition 
-            ${loading ? "bg-gray-400 cursor-not-allowed" : "bg-red-500 hover:bg-red-600"}`}
+            ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-red-500 hover:bg-red-600"
+            }`}
         >
           {loading ? "Enviando..." : "Enviar"}
         </button>
+
+        {responseMessage.text && (
+          <p
+            className={`mt-4 text-center font-medium ${
+              responseMessage.type === "success"
+                ? "text-black"
+                : "text-red-600"
+            }`}
+          >
+            {responseMessage.text}
+          </p>
+        )}
       </form>
     </div>
   );
