@@ -1,5 +1,6 @@
 ---
-const base = import.meta.env.BASE_URL;
+const withBase = (path = '') =>
+  `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\//, '')}/`;
 ---
 
 <nav class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm text-white shadow-md z-50">
@@ -8,21 +9,14 @@ const base = import.meta.env.BASE_URL;
 
     <ul class="flex space-x-6 text-sm font-medium">
       <li>
-        <a href={new URL('', base).pathname} class="hover:text-blue-400 transition">
-          Inicio
-        </a>
+        <a href={withBase()} class="hover:text-blue-400 transition">Inicio</a>
       </li>
 
       <li>
-        <a href={new URL('cualidades/', base).pathname} class="hover:text-blue-400 transition">
+        <a href={withBase('cualidades')} class="hover:text-blue-400 transition">
           Cualidades
         </a>
       </li>
-
-      <li><a href="#proyectos" class="hover:text-blue-400 transition">Proyectos</a></li>
-      <li><a href="#galeria" class="hover:text-blue-400 transition">Contenido visual</a></li>
-      <li><a href="#contacto" class="hover:text-blue-400 transition">Contacto</a></li>
-      <li><a href="#formulario" target="_blank" class="hover:text-blue-400 transition">Formulario</a></li>
     </ul>
   </div>
 </nav>
