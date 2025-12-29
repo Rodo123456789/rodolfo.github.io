@@ -3,8 +3,8 @@
     <h1 class="text-2xl font-semibold tracking-wide">Mi Portafolio</h1>
 
     <ul class="flex space-x-6 text-sm font-medium">
-      <li><a href="/index" class="hover:text-blue-400 transition">Inicio</a></li>
-      <li><a href="/cualidades" class="hover:text-blue-400 transition">Cualidades</a></li>
+      <li><a href={import.meta.env.BASE_URL} class="hover:text-blue-400 transition">Inicio</a></li>
+      <li><a href={`${import.meta.env.BASE_URL}cualidades`} class="hover:text-blue-400 transition">Cualidades</a></li>
       <li><a href="#proyectos" class="hover:text-blue-400 transition">Proyectos</a></li>
       <li><a href="#galeria" class="hover:text-blue-400 transition">Contenido visual</a></li>
       <li><a href="#contacto" class="hover:text-blue-400 transition">Contacto</a></li>
