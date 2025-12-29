@@ -1,0 +1,114 @@
+---
+import "../styles/global.css";
+import responsable from "/src/assets/info/res.png";
+import creativo from "/src/assets/info/creativo.png";
+import conocimiento from "/src/assets/info/sistemas.png";
+import trabajo from "/src/assets/info/equipo.png";
+import aprendizaje from "/src/assets/info/continuo.png";
+import musica from "/src/assets/info/musica.png";
+import cafe from "/src/assets/info/cafe.png";
+import videojuegos from "/src/assets/info/videojuegos.png";
+import tecnologia from "/src/assets/info/tecnologia.webp";
+import naturaleza from "/src/assets/info/naturaleza.png";
+
+const habilidades = [
+  { texto: "Responsable", img: responsable.src },
+  { texto: "Creativo", img: creativo.src },
+  { texto: "Conocimientos técnicos en Sistemas y Administración", img: conocimiento.src },
+  { texto: "Trabajo en equipo y comunicación", img: trabajo.src },
+  { texto: "Aprendizaje continuo", img: aprendizaje.src },
+];
+
+const gustos = [
+  { texto: "Música regional Mexicano", img: musica.src },
+  { texto: "Café", img: cafe.src },
+  { texto: "Videojuegos", img: videojuegos.src },
+  { texto: "Tecnología e innovación", img: tecnologia.src },
+  { texto: "Naturaleza y fotografía", img: naturaleza.src },
+];
+---
+
+<nav class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm text-white shadow-md z-50">
+  <div class="max-w-6xl mx-auto px-6 py-11 flex justify-between items-center">
+    <h1 class="text-2xl font-semibold tracking-wide">Mi Portafolio</h1>
+
+    <ul class="flex space-x-6 text-sm font-medium">
+      <li><a href="/" class="hover:text-blue-400 transition">Inicio</a></li>
+      <li><a href="/cualidades" class="hover:text-blue-400 transition">Cualidades</a></li>
+      <li><a href="#proyectos" class="hover:text-blue-400 transition">Proyectos</a></li>
+      <li><a href="#galeria" class="hover:text-blue-400 transition">Contenido visual</a></li>
+      <li><a href="#contacto" class="hover:text-blue-400 transition">Contacto</a></li>
+      <li><a href="#formulario" target="_blank" class="hover:text-blue-400 transition">Formulario</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="habilidades" class="bg-gray-900 py-20 px-8 text-gray-100">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-semibold text-center text-blue-400 mb-10">
+      <br>
+      Cualidades y gustos
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-10">
+      <div>
+        <h3 class="text-2xl mb-4 text-gray-200">Cualidades</h3>
+        
+        <ul class="space-y-4">
+          {habilidades.map((item) => (
+            <li class="relative overflow-hidden rounded-lg shadow-sm bg-gray-800 hover:bg-gray-700 transition p-4 flex items-center">
+
+
+              <img 
+                src={item.img}
+                alt=""
+                class="absolute inset-0 w-full h-full object-cover opacity-30 blur-sm"
+              />
+
+              <div class="w-11 h-11 rounded-full overflow-hidden border-2 border-gray-300 mr-4 z-10">
+                <img src={item.img} alt="" class="w-full h-full object-cover" />
+              </div>
+
+        
+              <span class="z-10 relative font-medium">
+                {item.texto}
+              </span>
+
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-2xl mb-4 text-gray-200">Gustos</h3>
+        
+        <ul class="space-y-4">
+          {gustos.map((item) => (
+            <li class="relative overflow-hidden rounded-lg shadow-sm bg-gray-800 hover:bg-gray-700 transition p-4 flex items-center">
+
+              <img 
+                src={item.img}
+                alt=""
+                class="absolute inset-0 w-full h-full object-cover opacity-30 blur-sm"
+              />
+
+              <div class="w-11 h-11 rounded-full overflow-hidden border-2 border-gray-300 mr-4 z-10">
+                <img src={item.img} alt="" class="w-full h-full object-cover" />
+              </div>
+
+        
+              <span class="z-10 relative font-medium">
+                {item.texto}
+              </span>
+
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="bg-gray-900 py-6 text-center text-gray-500 text-sm">
+  © {new Date().getFullYear()} Rodolfo Cruz Ibarra - Todos los derechos reservados.
+</footer>
