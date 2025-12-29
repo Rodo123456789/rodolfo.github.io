@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 
 function Label({ children }) {
   return (
-    <label className="block text-sm font-medium text-gray-700 mt-4">
+    <label className="block text-sm font-medium text-gray-300 mt-4">
       {children}
     </label>
   );
@@ -11,8 +11,10 @@ function Label({ children }) {
 function Input(props) {
   return (
     <input
-      className="mt-1 block w-full rounded-lg p-3 border border-gray-300 
-                 focus:border-red-500 outline-none transition-all duration-300"
+      className="mt-1 block w-full rounded-lg p-3 bg-gray-800 text-gray-100 
+                 border border-gray-700 placeholder-gray-400
+                 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 
+                 outline-none transition-all duration-300"
       {...props}
     />
   );
@@ -21,8 +23,10 @@ function Input(props) {
 function TextArea(props) {
   return (
     <textarea
-      className="mt-1 block w-full rounded-lg p-3 border border-gray-300 
-                 focus:border-red-500 outline-none transition-all duration-300"
+      className="mt-1 block w-full rounded-lg p-3 bg-gray-800 text-gray-100 
+                 border border-gray-700 placeholder-gray-400
+                 focus:border-blue-400 focus:ring-1 focus:ring-blue-400 
+                 outline-none transition-all duration-300 resize-none"
       {...props}
     />
   );
@@ -80,12 +84,15 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="w-full flex justify-center px-4">
+    <div className="w-full flex justify-center px-4 py-10">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md bg-white shadow-lg rounded-xl p-8"
+        className="w-full max-w-md bg-gray-900/90 backdrop-blur
+                   border border-gray-800 shadow-xl rounded-2xl p-8"
       >
-        <h2 className="text-2xl font-bold text-center mb-6">Contáctame</h2>
+        <h2 className="text-2xl font-semibold text-center text-blue-400 mb-6">
+          Contáctame
+        </h2>
 
         <fieldset disabled={loading} className="flex flex-col gap-4">
           <div>
@@ -122,22 +129,22 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={loading}
-          className={`mt-6 w-full text-white py-3 rounded-lg transition 
+          className={`mt-6 w-full py-3 rounded-lg font-medium transition-all duration-300
             ${
               loading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-red-500 hover:bg-red-600"
+                ? "bg-gray-600 cursor-not-allowed text-gray-300"
+                : "bg-blue-500 hover:bg-blue-600 text-white"
             }`}
         >
-          {loading ? "Enviando..." : "Enviar"}
+          {loading ? "Enviando..." : "Enviar mensaje"}
         </button>
 
         {responseMessage.text && (
           <p
             className={`mt-4 text-center font-medium ${
               responseMessage.type === "success"
-                ? "text-black"
-                : "text-red-600"
+                ? "text-green-400"
+                : "text-red-400"
             }`}
           >
             {responseMessage.text}

@@ -1,4 +1,9 @@
 ---
+import "../styles/global.css";
+
+import Navbar from "../components/templates/Menu.astro";
+import Footer from "../components/templates/Pie.astro";
+
 Astro.response.headers.set("Content-Type", "text/html; charset=utf-8");
 
 const videoYT1 = "8z6WAAgvAKk";
@@ -91,6 +96,14 @@ const proyectos = [
   },
 ];
 ---
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio de proyectos</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" />
+  </head>
+<Navbar />
+
 
 <div class="bg-gray-950 text-gray-100 min-h-screen font-sans">
 
@@ -145,3 +158,5 @@ const proyectos = [
   </footer>
 
 </div>
+
+<Footer />

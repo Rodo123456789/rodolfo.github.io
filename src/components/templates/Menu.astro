@@ -4,8 +4,8 @@ const withBase = (path = '') =>
 ---
 
 <nav class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm text-white shadow-md z-50">
-  <div class="max-w-6xl mx-auto px-6 py-11 flex justify-between items-center">
-    <h1 class="text-2xl font-semibold tracking-wide">Mi Portafolio</h1>
+  <div class="max-w-7xl mx-auto px-1 py-10 flex justify-between items-center">
+    <h1 class="text-3xl font-semibold tracking-wide">Mi Portafolio</h1>
 
     <ul class="flex space-x-6 text-sm font-medium">
       <li>
@@ -15,6 +15,24 @@ const withBase = (path = '') =>
       <li>
         <a href={withBase('cualidades')} class="hover:text-blue-400 transition">
           Cualidades
+        </a>
+      </li>
+
+      <li>
+        <a href={withBase('galeria')} class="hover:text-blue-400 transition">
+          Contenido visual
+        </a>
+      </li>
+
+      <li>
+        <a href={withBase('proyectos')} class="hover:text-blue-400 transition">
+          Proyectos
+        </a>
+      </li>
+
+      <li>
+        <a href={withBase('formulario')} class="hover:text-blue-400 transition">
+          Formulario
         </a>
       </li>
     </ul>
