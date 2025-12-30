@@ -1,39 +1,100 @@
 ---
-const withBase = (path = '') =>
-  `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${path.replace(/^\//, '')}/`;
+const withBase = (path = "") =>
+  `${import.meta.env.BASE_URL.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
+
+// ruta actual
+const currentPath = Astro.url.pathname.replace(/\/$/, "");
+
+// función para saber si está activo
+const isActive = (path = "") => {
+  const target = withBase(path).replace(/\/$/, "");
+  return currentPath === target;
+};
 ---
 
 <nav class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm text-white shadow-md z-50">
-  <div class="max-w-7xl mx-auto px-1 py-10 flex justify-between items-center">
+  <div class="max-w-7xl mx-auto px-6 py-10 flex justify-between items-center">
     <h1 class="text-3xl font-semibold tracking-wide">Mi Portafolio</h1>
 
-    <ul class="flex space-x-6 text-sm font-medium">
-      <li>
-        <a href={withBase()} class="hover:text-blue-400 transition">Inicio</a>
+    <ul class="flex space-x-8 text-sm font-medium">
+      <!-- INICIO -->
+      <li class="relative">
+        <a
+          href={withBase()}
+          class={`pb-2 transition ${
+            isActive() ? "text-blue-400" : "hover:text-blue-400"
+          }`}
+        >
+          Inicio
+        </a>
+
+        {isActive() && (
+          <span class="absolute left-0 -bottom-1 w-full h-[2px] bg-blue-400 rounded-full"></span>
+        )}
       </li>
 
-      <li>
-        <a href={withBase('cualidades')} class="hover:text-blue-400 transition">
+      <!-- CUALIDADES -->
+      <li class="relative">
+        <a
+          href={withBase("cualidades")}
+          class={`pb-2 transition ${
+            isActive("cualidades") ? "text-blue-400" : "hover:text-blue-400"
+          }`}
+        >
           Cualidades
         </a>
+
+        {isActive("cualidades") && (
+          <span class="absolute left-0 -bottom-1 w-full h-[2px] bg-blue-400 rounded-full"></span>
+        )}
       </li>
 
-      <li>
-        <a href={withBase('galeria')} class="hover:text-blue-400 transition">
+      <!-- GALERIA -->
+      <li class="relative">
+        <a
+          href={withBase("galeria")}
+          class={`pb-2 transition ${
+            isActive("galeria") ? "text-blue-400" : "hover:text-blue-400"
+          }`}
+        >
           Contenido visual
         </a>
+
+        {isActive("galeria") && (
+          <span class="absolute left-0 -bottom-1 w-full h-[2px] bg-blue-400 rounded-full"></span>
+        )}
       </li>
 
-      <li>
-        <a href={withBase('proyectos')} class="hover:text-blue-400 transition">
+      <!-- PROYECTOS -->
+      <li class="relative">
+        <a
+          href={withBase("proyectos")}
+          class={`pb-2 transition ${
+            isActive("proyectos") ? "text-blue-400" : "hover:text-blue-400"
+          }`}
+        >
           Proyectos
         </a>
+
+        {isActive("proyectos") && (
+          <span class="absolute left-0 -bottom-1 w-full h-[2px] bg-blue-400 rounded-full"></span>
+        )}
       </li>
 
-      <li>
-        <a href={withBase('formulario')} class="hover:text-blue-400 transition">
+      <!-- FORMULARIO -->
+      <li class="relative">
+        <a
+          href={withBase("formulario")}
+          class={`pb-2 transition ${
+            isActive("formulario") ? "text-blue-400" : "hover:text-blue-400"
+          }`}
+        >
           Formulario
         </a>
+
+        {isActive("formulario") && (
+          <span class="absolute left-0 -bottom-1 w-full h-[2px] bg-blue-400 rounded-full"></span>
+        )}
       </li>
     </ul>
   </div>
