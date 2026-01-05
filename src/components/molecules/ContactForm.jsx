@@ -97,7 +97,7 @@ export default function ContactForm() {
         <fieldset disabled={loading} className="flex flex-col gap-4">
           <div>
             <Label>Nombre</Label>
-            <Input ref={nameRef} placeholder="Tu nombre" required />
+            <Input ref={nameRef} placeholder="Tu nombre" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"title="Solo se permiten letras"/>
           </div>
 
           <div>
