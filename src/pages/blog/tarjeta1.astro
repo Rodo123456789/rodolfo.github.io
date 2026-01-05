@@ -1,0 +1,68 @@
+---
+import "/src/styles/global.css";
+
+const title = "Actividad 1";
+const description = `
+Esta es la descripción completa de la actividad.
+Aquí puedes explicar con más detalle de qué trata,
+qué aprendiste o qué desarrollaste.
+`;
+
+const images = [
+  "/src/assets/blog/img1.jpg",
+  "/src/assets/blog/img2.jpg",
+  "/src/assets/blog/img3.jpg",
+];
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+
+    <style>
+      .carousel {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+      }
+
+      .carousel img {
+        scroll-snap-align: center;
+        min-width: 100%;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-950 text-gray-100 min-h-screen">
+    <main class="max-w-6xl mx-auto px-6 py-20">
+
+      <!-- TÍTULO -->
+      <h1 class="text-4xl font-bold text-center text-blue-400 mb-16">
+        {title}
+      </h1>
+
+      <!-- CONTENIDO -->
+      <div class="grid md:grid-cols-2 gap-10">
+
+        <!-- CARRUSEL -->
+        <div class="carousel rounded-xl overflow-hidden">
+          {images.map((img) => (
+            <img
+              src={img}
+              alt="Imagen del proyecto"
+              class="object-cover h-80"
+            />
+          ))}
+        </div>
+
+        <!-- DESCRIPCIÓN -->
+        <div class="bg-gray-900 rounded-xl p-6 leading-relaxed text-gray-300">
+          <p>{description}</p>
+        </div>
+
+      </div>
+
+    </main>
+  </body>
+</html>

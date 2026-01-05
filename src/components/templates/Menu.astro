@@ -17,7 +17,7 @@ const isActive = (path = "") => {
     <h1 class="text-3xl font-semibold tracking-wide">Mi Portafolio</h1>
 
     <ul class="flex space-x-8 text-sm font-medium">
-      <!-- INICIO -->
+      <!-- BLOG -->
       <li class="relative">
         <a
           href={withBase()}
@@ -25,10 +25,26 @@ const isActive = (path = "") => {
             isActive() ? "text-blue-400" : "hover:text-blue-400"
           }`}
         >
-          Inicio
+          Mi blog
         </a>
 
         {isActive() && (
+          <span class="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-400 rounded-full"></span>
+        )}
+      </li>
+
+      <!-- INICIO -->
+      <li class="relative">
+        <a
+          href={withBase("sobremi")}
+          class={`pb-2 transition ${
+            isActive("sobremi") ? "text-blue-400" : "hover:text-blue-400"
+          }`}
+        >
+          Sobre mí
+        </a>
+
+        {isActive("sobremi") && (
           <span class="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-400 rounded-full"></span>
         )}
       </li>
