@@ -4,7 +4,6 @@ const withBase = (path = "") =>
 
 const currentPath = Astro.url.pathname.replace(/\/$/, "");
 
-
 const isActive = (path = "") => {
   const target = withBase(path).replace(/\/$/, "");
   return currentPath === target;
@@ -13,104 +12,86 @@ const isActive = (path = "") => {
 
 <nav class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm text-white shadow-md z-50">
   <div class="max-w-7xl mx-auto px-6 py-10 flex justify-between items-center">
+
     <h1 class="text-3xl font-semibold tracking-wide">Mi Portafolio</h1>
 
-    <ul class="flex space-x-8 text-sm font-medium">
-      <!-- BLOG -->
-      <li class="relative">
-        <a
-          href={withBase()}
-          class={`pb-2 transition ${
-            isActive() ? "text-blue-400" : "hover:text-blue-400"
-          }`}
-        >
-          Mi blog
-        </a>
+ 
+    <button
+      id="menu-btn"
+      class="md:hidden focus:outline-none"
+      aria-label="Abrir menú"
+    >
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
 
-        {isActive() && (
-          <span class="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-400 rounded-full"></span>
-        )}
-      </li>
+   
+    <ul class="hidden md:flex space-x-8 text-sm font-medium">
+      {[
+        ["", "Mi blog"],
+        ["sobremi", "Sobre mí"],
+        ["cualidades", "Cualidades"],
+        ["galeria", "Contenido visual"],
+        ["proyectos", "Proyectos"],
+        ["formulario", "Formulario"],
+      ].map(([path, label]) => (
+        <li class="relative">
+          <a
+            href={withBase(path)}
+            class={`pb-2 transition ${
+              isActive(path) ? "text-blue-400" : "hover:text-blue-400"
+            }`}
+          >
+            {label}
+          </a>
 
-      <!-- INICIO -->
-      <li class="relative">
-        <a
-          href={withBase("sobremi")}
-          class={`pb-2 transition ${
-            isActive("sobremi") ? "text-blue-400" : "hover:text-blue-400"
-          }`}
-        >
-          Sobre mí
-        </a>
+          {isActive(path) && (
+            <span class="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-400 rounded-full"></span>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
 
-        {isActive("sobremi") && (
-          <span class="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-400 rounded-full"></span>
-        )}
-      </li>
 
-      <!-- CUALIDADES -->
-      <li class="relative">
-        <a
-          href={withBase("cualidades")}
-          class={`pb-2 transition ${
-            isActive("cualidades") ? "text-blue-400" : "hover:text-blue-400"
-          }`}
-        >
-          Cualidades
-        </a>
-
-        {isActive("cualidades") && (
-          <span class="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-400 rounded-full"></span>
-        )}
-      </li>
-
-      <!-- GALERIA -->
-      <li class="relative">
-        <a
-          href={withBase("galeria")}
-          class={`pb-2 transition ${
-            isActive("galeria") ? "text-blue-400" : "hover:text-blue-400"
-          }`}
-        >
-          Contenido visual
-        </a>
-
-        {isActive("galeria") && (
-          <span class="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-400 rounded-full"></span>
-        )}
-      </li>
-
-      <!-- PROYECTOS -->
-      <li class="relative">
-        <a
-          href={withBase("proyectos")}
-          class={`pb-2 transition ${
-            isActive("proyectos") ? "text-blue-400" : "hover:text-blue-400"
-          }`}
-        >
-          Proyectos
-        </a>
-
-        {isActive("proyectos") && (
-          <span class="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-400 rounded-full"></span>
-        )}
-      </li>
-
-      <!-- FORMULARIO -->
-      <li class="relative">
-        <a
-          href={withBase("formulario")}
-          class={`pb-2 transition ${
-            isActive("formulario") ? "text-blue-400" : "hover:text-blue-400"
-          }`}
-        >
-          Formulario
-        </a>
-
-        {isActive("formulario") && (
-          <span class="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-400 rounded-full"></span>
-        )}
-      </li>
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-gray-900 border-t border-gray-800"
+  >
+    <ul class="flex flex-col px-6 py-4 space-y-4 text-sm">
+      {[
+        ["", "Mi blog"],
+        ["sobremi", "Sobre mí"],
+        ["cualidades", "Cualidades"],
+        ["galeria", "Contenido visual"],
+        ["proyectos", "Proyectos"],
+        ["formulario", "Formulario"],
+      ].map(([path, label]) => (
+        <li>
+          <a
+            href={withBase(path)}
+            class={`block ${
+              isActive(path)
+                ? "text-blue-400 font-semibold"
+                : "hover:text-blue-400"
+            }`}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
     </ul>
   </div>
 </nav>
+
+<script>
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("mobile-menu");
+
+  btn?.addEventListener("click", () => {
+    menu?.classList.toggle("hidden");
+  });
+</script>

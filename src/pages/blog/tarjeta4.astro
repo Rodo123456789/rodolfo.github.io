@@ -4,21 +4,38 @@ import "/src/styles/global.css";
 import Navbar from "../../components/templates/Menudos.astro";
 import Footer from "../../components/templates/Pie.astro";
 
-import img1 from "/src/assets/blog/uno.jpeg";
-import img2 from "/src/assets/blog/uno.jpeg";
-import img3 from "/src/assets/blog/uno.jpeg";
+import img1 from "/src/assets/blog/4.1.webp";
+import img2 from "/src/assets/blog/4.2.avif";
+import img3 from "/src/assets/blog/4.3.avif";
+import img4 from "/src/assets/blog/4.4.avif";
+import img5 from "/src/assets/blog/4.5.avif";
+import img6 from "/src/assets/blog/4.6.avif";
 
-const title = "Actividad 1";
+const title = "Mi PS5 y mis videojuegos favoritos";
 const description = `
-------`;
+Cuento con una consola PlayStation 5, que utilizo en mi tiempo libre para disfrutar de una variedad de videojuegos. 
+Algunos de mis títulos favoritos incluyen:
 
-const images = [img1, img2, img3];
+· Spider-Man 2.
+
+· GTA V.
+
+· God of War.
+
+· The Last of Us.
+
+· Red Dead Redemption II.
+
+Jugar en la consola PS5 es una gran experiencia, ya que ofrece una amplia variedad de juegos con gráficos impresionantes y una jugabilidad envolvente.
+`;
+
+const images = [img1, img2, img3, img4, img5, img6];
 ---
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>uno</title>
+    <title>Mi PS5 y mis videojuegos favoritos</title>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" />
   </head>
 
@@ -97,7 +114,7 @@ const images = [img1, img2, img3];
           carousel.style.scrollBehavior = "smooth";
         }, 600);
       }
-    }, 4000);
+    }, 3000);
   }
 </script>
 <Footer />
