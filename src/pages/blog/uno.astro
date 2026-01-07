@@ -9,28 +9,26 @@ import img2 from "/src/assets/blog/1.2.jpeg";
 import img3 from "/src/assets/blog/umb.jpg";
 
 const title = "Mi vida diaria";
-const description = `
-Cuando son periodos vacacionales me gusta despertarme tarde, para posteriormente disfrutar de un buen desayuno
-junto con mi familia, platicar con ellos un buen rato. Después de eso salir afuera a dar un paseo disfrutando de la mañana.
 
-Luego regreso para ayudar en las tareas del hogar, como limpiar mi cuarto o cuidar los animales. Más tarde, suelo dedicar tiempo a mis pasatiempos favoritos
-como jugar videojuegos o ver series. Ya por la noche vuelvo a compartir con mi familia la cena juntos y ver una película antes de dormir.
-
-En tiempos de clases, mi rutina cambia ya que tengo que levantarme más temprano para poder acudir a la universidad,
-el resto del día me paso en clases, al regresar a casa me dedico a hacer mis tareas y estudiar para el día siguiente.`;
+const description = `Cuando son periodos vacacionales me gusta despertarme tarde, para posteriormente disfrutar de un buen desayuno junto con mi familia, platicar con ellos un buen rato. Después de eso salir afuera a dar un paseo disfrutando de la mañana. Luego regreso para ayudar en las tareas del hogar, como limpiar mi cuarto o cuidar los animales. Más tarde, suelo dedicar tiempo a mis pasatiempos favoritos como jugar videojuegos o ver series. Ya por la noche vuelvo a compartir con mi familia la cena juntos y ver una película antes de dormir. En tiempos de clases, mi rutina cambia ya que tengo que levantarme más temprano para poder acudir a la universidad, el resto del día me paso en clases, al regresar a casa me dedico a hacer mis tareas y estudiar para el día siguiente.`;
 
 const images = [img1, img2, img3];
 ---
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mi vida diaria</title>
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" />
-  </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi vida diaria</title>
+  <link
+    rel="icon"
+    href="https://cdn-icons-png.flaticon.com/512/2920/2920277.png"
+  />
+</head>
 
 <Navbar />
+
 <title>{title}</title>
+
 <style>
   .carousel {
     display: flex;
@@ -48,36 +46,27 @@ const images = [img1, img2, img3];
 
 <main class="bg-gray-950 text-gray-100 min-h-screen">
   <div class="max-w-6xl mx-auto px-6 py-32">
-
     <h1 class="text-4xl font-bold text-center text-blue-400 mb-16">
       {title}
     </h1>
 
     <div class="grid md:grid-cols-2 gap-10">
-
-      <div
-        class="carousel rounded-xl overflow-hidden"
-        id="carousel"
-      >
+      <div class="carousel rounded-xl overflow-hidden" id="carousel">
         {images.map((img) => (
           <img src={img.src} alt="Imagen del proyecto" />
         ))}
-
         <img src={images[0].src} alt="Imagen clonada" />
       </div>
 
-      
       <div class="bg-gray-900 rounded-xl p-6 leading-relaxed text-gray-300 space-y-4 text-justify">
-  {description
-    .trim()
-    .split("\n\n")
-    .map((text) => (
-      <p>{text}</p>
-    ))}
-</div>
-
+        {description
+          .trim()
+          .split("\n\n")
+          .map((text) => (
+            <p>{text}</p>
+          ))}
+      </div>
     </div>
-
   </div>
 </main>
 
@@ -90,7 +79,6 @@ const images = [img1, img2, img3];
 
     setInterval(() => {
       index++;
-
       carousel.scrollTo({
         left: carousel.clientWidth * index,
         behavior: "smooth",
@@ -107,4 +95,5 @@ const images = [img1, img2, img3];
     }, 4000);
   }
 </script>
+
 <Footer />
