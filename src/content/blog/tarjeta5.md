@@ -17,9 +17,9 @@ ya que verla en pantalla grande con buen sonido es algo que no se puede comparar
 Y si ya las he visto anteriormente, las vuelvo a disfrutar en casa, ya sea en mi computadora o en la televisión.  
 Las películas que más me han gustado son:
 
-- El Conjuro  
-- Transformers 3  
-- Dragon Ball Super: Broly  
-- Avengers: Endgame  
-- Spider-Man: No Way Home  
-- Rápidos y Furiosos
+- **El Conjuro**  
+- **Transformers 3**  
+- **Dragon Ball Super: Broly**  
+- **Avengers: Endgame** 
+- **Spider-Man: No Way Home**  
+- **Rápidos y Furiosos**
