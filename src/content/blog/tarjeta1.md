@@ -2,9 +2,9 @@
 title: "Mi vida diaria"
 description: "Descripción de mis actividades ritinarias."
 images:
-  - "/public/blog/uuno.jpeg"
-  - "/public/blog/1.2.jpeg"
-  - "/public/umb.jpg"
+  - "/blog/uuno.jpeg"
+  - "/blog/1.2.jpeg"
+  - "/blog/umb.jpg"
 ---
 
 Cuando son periodos vacacionales me gusta despertarme tarde, para posteriormente disfrutar de un buen desayuno

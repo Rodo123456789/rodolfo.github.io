@@ -77,7 +77,11 @@ const images = post.data.images ?? [];
       {images.length > 0 && (
         <div class="carousel rounded-xl overflow-hidden" id="carousel">
           {images.map((img) => (
-            <img src={img} alt={title} />
+            <img
+  src={`${import.meta.env.BASE_URL}${img.replace(/^\//, "")}`}
+  alt={title}
+/>
+
           ))}
           <img src={images[0]} alt="Imagen clonada" />
         </div>
