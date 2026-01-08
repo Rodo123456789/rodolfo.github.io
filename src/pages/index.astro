@@ -3,37 +3,121 @@ import "../styles/global.css";
 
 import Navbar from "../components/templates/Menu.astro";
 import Footer from "../components/templates/Pie.astro";
-import ProfileCard from "../components/templates/Info.astro";
+
+import imagenUno from "/src/assets/blog/uuno.jpeg";
+import imagenDos from "/src/assets/blog/2.jpeg";
+import imagenTres from "/src/assets/blog/3.1.jpg";
+import imagenCuatro from "/src/assets/blog/4.1.webp";
+import imagenCinco from "/src/assets/blog/cinco.jpeg";
+
+const posts = [
+  {
+    title: "Mi vida diaria",
+    description: "Descripción de mis actividades rutinarias.",
+    image: imagenUno,
+    slug: "tarjeta1",
+  },
+  {
+    title: "Asistencia a eventos musicales",
+    description: "Asistir a eventos masivos donde se presentan mis grupos favoritos",
+    image: imagenDos,
+    slug: "tarjeta2",
+  },
+  {
+    title: "Visita al museo del Banco de México",
+    description: "Visité el museo del Banco de México para aprender sobre la historia monetaria.",
+    image: imagenTres,
+    slug: "tarjeta3",
+  },
+  {
+    title: "Mi PS5 y mis videojuegos favoritos",
+    description: "Descripción de mis videojuegos favoritos en mi tiempo libre.",
+    image: imagenCuatro,
+    slug: "tarjeta4",
+  },
+  {
+    title: "Mis películas favoritas",
+    description: "Mis mejores películas que he visto y se han convertido en mis favoritas",
+    image: imagenCinco,
+    slug: "tarjeta5",
+  },
+];
+
+const firstRow = posts.slice(0, 3);
+const secondRow = posts.slice(3);
 ---
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog</title>
+  <link
+    rel="icon"
+    href="https://cdn-icons-png.flaticon.com/512/2920/2920277.png"
+  />
+</head>
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog - Rodolfo Cruz Ibarra</title>
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" />
+<Navbar />
 
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-    </style>
-  </head>
+<main class="bg-gray-950 text-gray-100 min-h-screen">
+  <div class="max-w-6xl mx-auto px-6 py-32">
 
-  <body class="bg-gray-950 font-sans">
-   
-    <Navbar />
+    <h1 class="text-4xl font-bold text-center text-blue-400 mb-16">
+      Mi blog personal
+    </h1>
 
-    <main>
+    <!-- FILA 1 -->
+    <div class="grid md:grid-cols-3 gap-8 mb-8">
+      {firstRow.map((post) => (
+        <a
+          href={`${import.meta.env.BASE_URL}blog/${post.slug}`}
 
-     
-      <section id="inicio">
-        <ProfileCard />
-      </section>
+          class="group bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
+        >
+          <img
+            src={post.image.src}
+            alt={post.title}
+            class="w-full h-48 object-cover group-hover:scale-105 transition"
+          />
 
-    </main>
+          <div class="p-5">
+            <h2 class="text-blue-400 font-semibold mb-2">
+              {post.title}
+            </h2>
+            <p class="text-sm text-gray-400">
+              {post.description}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
 
-   
-    <Footer />
-  </body>
+    <!-- FILA 2 -->
+    <div class="flex justify-center gap-8 flex-wrap">
+      {secondRow.map((post) => (
+        <a
+          href={`${import.meta.env.BASE_URL}blog/${post.slug}`}
+          class="group bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition w-full md:w-[calc(33.333%-1.33rem)]"
+        >
+          <img
+            src={post.image.src}
+            alt={post.title}
+            class="w-full h-48 object-cover group-hover:scale-105 transition"
+          />
 
+          <div class="p-5">
+            <h2 class="text-blue-400 font-semibold mb-2">
+              {post.title}
+            </h2>
+            <p class="text-sm text-gray-400">
+              {post.description}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</main>
+
+<Footer />
