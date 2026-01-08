@@ -2,13 +2,13 @@
 title: "Mis películas favoritas"
 description: "Películas que más me han gustado y que disfruto ver tanto en el cine como en casa."
 images:
-  - "/src/assets/blog/cinco.jpeg"
-  - "/src/assets/blog/5.2.jpg"
-  - "/src/assets/blog/5.3.jpg"
-  - "/src/assets/blog/5.4.jpg"
-  - "/src/assets/blog/5.5.webp"
-  - "/src/assets/blog/5.6.jpg"
-  - "/src/assets/blog/5.7.jpg"
+  - "/public/blog/cinco.jpeg"
+  - "/public/blog/5.2.jpg"
+  - "/public/blog/5.3.jpg"
+  - "/public/blog/5.4.jpg"
+  - "/public/blog/5.5.webp"
+  - "/public/blog/5.6.jpg"
+  - "/public/blog/5.7.jpg"
 ---
 
 Cuando existe la posibilidad de ver una buena película de estreno, decido ir al cine para disfrutar de la experiencia completa,

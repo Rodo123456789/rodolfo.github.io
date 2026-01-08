@@ -2,9 +2,9 @@
 title: "Visita al Museo del Banco de México"
 description: "Experiencia cultural en el Museo del Banco de México y visita a lugares cercanos."
 images:
-  - "/src/assets/blog/3.1.jpg"
-  - "/src/assets/blog/oro.jpeg"
-  - "/src/assets/blog/bille.jpeg"
+  - "/public/blog/3.1.jpg"
+  - "/public/blog/oro.jpeg"
+  - "/public/blog/bille.jpeg"
 ---
 
 El día 11 de noviembre de 2025 acudí al Museo del Banco de México, ubicado en la Ciudad de México.  

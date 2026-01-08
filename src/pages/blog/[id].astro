@@ -1,5 +1,6 @@
 ---
 import "/src/styles/global.css";
+
 import { getCollection } from "astro:content";
 import Navbar from "../../components/templates/Menudos.astro";
 import Footer from "../../components/templates/Pie.astro";
@@ -113,7 +114,7 @@ const images = post.data.images ?? [];
           carousel.style.scrollBehavior = "smooth";
         }, 600);
       }
-    }, 4000);
+    }, 3000);
   }
 </script>
 
