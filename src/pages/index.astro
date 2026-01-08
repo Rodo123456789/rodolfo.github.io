@@ -70,10 +70,10 @@ const secondRow = posts.slice(3);
     <div class="grid md:grid-cols-3 gap-8 mb-8">
       {firstRow.map((post) => (
         <a
-          href={`${import.meta.env.BASE_URL}blog/${post.slug}`}
+        href={`${import.meta.env.BASE_URL}blog/${post.slug}`}
+        class="group bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
+      >
 
-          class="group bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
-        >
           <img
             src={post.image.src}
             alt={post.title}
@@ -97,8 +97,9 @@ const secondRow = posts.slice(3);
       {secondRow.map((post) => (
         <a
           href={`${import.meta.env.BASE_URL}blog/${post.slug}`}
-          class="group bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition w-full md:w-[calc(33.333%-1.33rem)]"
+          class="group bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
         >
+
           <img
             src={post.image.src}
             alt={post.title}
