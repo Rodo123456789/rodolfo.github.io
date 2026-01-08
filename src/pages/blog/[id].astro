@@ -1,11 +1,9 @@
 ---
-import "/src/styles/global.css";
-
 import { getCollection } from "astro:content";
+import "/src/styles/global.css";
 import Navbar from "../../components/templates/Menudos.astro";
 import Footer from "../../components/templates/Pie.astro";
 
-// Generar rutas dinámicas /blog/id
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
 
@@ -15,54 +13,33 @@ export async function getStaticPaths() {
   }));
 }
 
-// Post actual
 const { post } = Astro.props;
-
-// Renderizar contenido markdown
 const { Content } = await post.render();
 
-// Datos del frontmatter
 const title = post.data.title;
 const images = post.data.images ?? [];
 ---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+</head>
+
+<Navbar />
+
 <style>
-  /* === CONTENIDO MARKDOWN === */
-  .post-content ul {
-    list-style-type: disc !important;
-    list-style-position: inside;
-    padding-left: 1.5rem;
-  }
-
-  .post-content li {
-    margin-bottom: 0.5rem;
-  }
-
-  /* === CARRUSEL === */
   .carousel {
     display: flex;
     overflow: hidden;
-    scroll-behavior: smooth;
   }
 
   .carousel img {
     min-width: 100%;
     height: 20rem;
     object-fit: cover;
-    flex-shrink: 0;
   }
 </style>
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title}</title>
-  <link
-    rel="icon"
-    href="https://cdn-icons-png.flaticon.com/512/2920/2920277.png"
-  />
-</head>
-
-<Navbar />
 
 <main class="bg-gray-950 text-gray-100 min-h-screen">
   <div class="max-w-6xl mx-auto px-6 py-32">
@@ -73,53 +50,25 @@ const images = post.data.images ?? [];
 
     <div class="grid md:grid-cols-2 gap-10">
 
-      <!-- CARRUSEL -->
+      <!-- IMÁGENES -->
       {images.length > 0 && (
-        <div class="carousel rounded-xl overflow-hidden" id="carousel">
+        <div class="carousel rounded-xl overflow-hidden">
           {images.map((img) => (
             <img
-  src={`${import.meta.env.BASE_URL}${img.replace(/^\//, "")}`}
-  alt={title}
-/>
-
+              src={`${import.meta.env.BASE_URL}${img.replace(/^\//, "")}`}
+              alt={title}
+            />
           ))}
-          <img src={images[0]} alt="Imagen clonada" />
         </div>
       )}
 
-      <!-- CONTENIDO MARKDOWN -->
-      <div class="post-content bg-gray-900 rounded-xl p-6 leading-relaxed text-gray-300 space-y-4 text-justify">
+      <!-- CONTENIDO MD -->
+      <div class="bg-gray-900 rounded-xl p-6 text-gray-300 leading-relaxed">
         <Content />
       </div>
 
     </div>
   </div>
 </main>
-
-<script>
-  const carousel = document.getElementById("carousel");
-
-  if (carousel) {
-    const slides = carousel.children;
-    let index = 0;
-
-    setInterval(() => {
-      index++;
-      carousel.scrollTo({
-        left: carousel.clientWidth * index,
-        behavior: "smooth",
-      });
-
-      if (index === slides.length - 1) {
-        setTimeout(() => {
-          carousel.style.scrollBehavior = "auto";
-          carousel.scrollLeft = 0;
-          index = 0;
-          carousel.style.scrollBehavior = "smooth";
-        }, 600);
-      }
-    }, 3000);
-  }
-</script>
 
 <Footer />
