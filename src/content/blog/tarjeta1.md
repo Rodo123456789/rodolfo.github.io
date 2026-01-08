@@ -2,7 +2,7 @@
 title: "Mi vida diaria"
 description: "Descripción de mis actividades ritinarias."
 images:
-  - "public/blog/umb.jpg"
+  - "/public/blog/uuno.jpeg"
   - "/blog/1.2.jpeg"
   - "/blog/umb.jpg"
 ---
