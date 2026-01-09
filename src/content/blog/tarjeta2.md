@@ -2,9 +2,9 @@
 title: "Asistencia a eventos musicales"
 description: "Asistir a conciertos y festivales de música en vivo de mis grupos favoritos."
 images:
-  - "/public/blog/2.jpeg"
-  - "/public/blog/2.2.jpeg"
-  - "/public/blog/2.3.jpeg"
+  - "blog/2.jpeg"
+  - "blog/2.2.jpeg"
+  - "blog/2.3.jpeg"
 ---
 
 Uno de mis pasatiempos favoritos es asistir a conciertos y festivales de música en vivo de grupos que son de mi agrado.
