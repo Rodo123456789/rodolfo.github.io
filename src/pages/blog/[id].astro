@@ -24,17 +24,25 @@ const { Content } = await post.render();
 // Datos del frontmatter
 const title = post.data.title;
 const images = post.data.images ?? [];
+
+// 🔑 BASE URL (GitHub Pages / local)
+const base = import.meta.env.BASE_URL;
 ---
+
 <style>
   /* === CONTENIDO MARKDOWN === */
   .post-content ul {
     list-style-type: disc !important;
-    list-style-position: inside;
+    list-style-position: outside;
     padding-left: 1.5rem;
   }
 
   .post-content li {
     margin-bottom: 0.5rem;
+  }
+
+  .post-content li::marker {
+    color: #60a5fa; /* blue-400 */
   }
 
   /* === CARRUSEL === */
@@ -77,9 +85,9 @@ const images = post.data.images ?? [];
       {images.length > 0 && (
         <div class="carousel rounded-xl overflow-hidden" id="carousel">
           {images.map((img) => (
-            <img src={img} alt={title} />
+            <img src={`${base}${img}`} alt={title} />
           ))}
-          <img src={images[0]} alt="Imagen clonada" />
+          <img src={`${base}${images[0]}`} alt="Imagen clonada" />
         </div>
       )}
 
