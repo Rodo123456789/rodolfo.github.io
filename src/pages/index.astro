@@ -57,70 +57,129 @@ const firstRow = posts.slice(0, 3);
 const secondRow = posts.slice(3);
 ---
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog</title>
-  <link
-    rel="icon"
-    href="https://cdn-icons-png.flaticon.com/512/2920/2920277.png"
-  />
-</head>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/2920/2920277.png"
+    />
+  </head>
 
-<Navbar />
+  <body>
+    <Navbar />
 
-<main class="bg-gray-950 text-gray-100 min-h-screen">
-  <div class="max-w-6xl mx-auto px-6 py-32">
-    <h1 class="text-4xl font-bold text-center text-blue-400 mb-16">
-      Mi blog personal
-    </h1>
+    <main class="bg-gray-950 text-gray-100 min-h-screen">
+      <div class="max-w-8xl mx-auto px-6 py-32">
+        <h1 class="text-4xl font-bold text-center text-blue-400 mb-16">
+          Mi blog personal
+        </h1>
 
-    <!-- FILA 1 -->
-    <div class="grid md:grid-cols-3 gap-8 mb-8">
-      {
-        firstRow.map((post) => (
-          <a
-            href={withBase(`blog/${post.slug}`)}
-            class="group bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
+        <!-- FILA 1 -->
+        <div id="page-1" class="grid md:grid-cols-3 gap-8 mb-8">
+          {
+            firstRow.map((post) => (
+              <a
+                href={withBase(`blog/${post.slug}`)}
+                class="group bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
+              >
+                <img
+                  src={post.image.src}
+                  alt={post.title}
+                  class="w-full h-64 object-cover group-hover:scale-105 transition"
+                />
+
+                <div class="p-5">
+                  <h2 class="text-blue-400 font-semibold mb-2">
+                    {post.title}
+                  </h2>
+                  <p class="text-sm text-gray-400">
+                    {post.description}
+                  </p>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+
+        <!-- FILA 2 (MISMO GRID QUE FILA 1) -->
+        <div
+  id="page-2"
+  class:list={["grid", "md:grid-cols-3", "gap-8", "mb-8", "hidden"]}
+>
+
+          {
+            secondRow.map((post) => (
+              <a
+                href={withBase(`blog/${post.slug}`)}
+                class="group bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
+              >
+                <img
+                  src={post.image.src}
+                  alt={post.title}
+                  class="w-full h-64 object-cover group-hover:scale-105 transition"
+                />
+
+                <div class="p-5">
+                  <h2 class="text-blue-400 font-semibold mb-2">
+                    {post.title}
+                  </h2>
+                  <p class="text-sm text-gray-400">
+                    {post.description}
+                  </p>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+
+        <!-- PAGINACIÓN -->
+        <div class="flex justify-center gap-4 mt-10">
+          <button
+            id="btn-1"
+            class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
           >
-            <img
-              src={post.image.src}
-              alt={post.title}
-              class="w-full h-48 object-cover group-hover:scale-105 transition"
-            />
+            1
+          </button>
 
-            <div class="p-5">
-              <h2 class="text-blue-400 font-semibold mb-2">{post.title}</h2>
-              <p class="text-sm text-gray-400">{post.description}</p>
-            </div>
-          </a>
-        ))
-      }
-    </div>
-
-    <!-- FILA 2 -->
-    <div class="flex justify-center gap-8 mb-8">
-      {
-        secondRow.map((post) => (
-          <a
-            href={withBase(`blog/${post.slug}`)}
-            class="group bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
-            style="flex: 1 1 calc((100%/3) - 2rem); max-width: calc((100%/3) - 2rem);"
+          <button
+            id="btn-2"
+            class="px-4 py-2 bg-gray-700 text-white rounded hover:bg-blue-600"
           >
-            <img
-              src={post.image.src}
-              alt={post.title}
-              class="w-full h-48 object-cover group-hover:scale-105 transition"
-            />
-            <div class="p-5">
-              <h2 class="text-blue-400 font-semibold mb-2">{post.title}</h2>
-              <p class="text-sm text-gray-400">{post.description}</p>
-            </div>
-          </a>
-        ))
-      }
-    </div>
-  </div>
-</main>
+            2
+          </button>
+        </div>
+      </div>
+    </main>
 
-<Footer />
+    <Footer />
+
+    <script>
+      const page1 = document.getElementById("page-1");
+      const page2 = document.getElementById("page-2");
+      const btn1 = document.getElementById("btn-1");
+      const btn2 = document.getElementById("btn-2");
+
+      btn1?.addEventListener("click", () => {
+        page1?.classList.remove("hidden");
+        page2?.classList.add("hidden");
+
+        btn1.classList.add("bg-blue-500");
+        btn2?.classList.remove("bg-blue-500");
+        btn2?.classList.add("bg-gray-700");
+      });
+
+      btn2?.addEventListener("click", () => {
+        page1?.classList.add("hidden");
+        page2?.classList.remove("hidden");
+
+        btn2.classList.add("bg-blue-500");
+        btn1?.classList.remove("bg-blue-500");
+        btn1?.classList.add("bg-gray-700");
+      });
+    </script>
+  </body>
+</html>
