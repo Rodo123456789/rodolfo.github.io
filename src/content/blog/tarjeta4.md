@@ -2,12 +2,12 @@
 title: "Mi PS5 y mis videojuegos favoritos"
 description: "Mi experiencia usando PlayStation 5 y los videojuegos que más disfruto."
 images:
-  - "/public/blog/4.1.webp"
-  - "/public/blog/4.2.avif"
-  - "/public/blog/4.3.avif"
-  - "/public/blog/4.4.avif"
-  - "/public/blog/4.5.avif"
-  - "/public/blog/4.6.avif"
+  - "blog/4.1.webp"
+  - "blog/4.2.avif"
+  - "blog/4.3.avif"
+  - "blog/4.4.avif"
+  - "blog/4.5.avif"
+  - "blog/4.6.avif"
 ---
 
 Cuento con una consola **PlayStation 5**, que utilizo en mi tiempo libre para disfrutar de una variedad de videojuegos.  

@@ -31,10 +31,51 @@ const base = import.meta.env.BASE_URL;
 
 <style>
   /* === CONTENIDO MARKDOWN === */
+  .post-content h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #60a5fa;
+    margin-bottom: 1rem;
+  }
+
+  .post-content h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #93c5fd;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .post-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #bfdbfe;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-content p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+  }
+
+  .post-content strong {
+    font-weight: 700;
+    color: #f9fafb;
+  }
+
   .post-content ul {
     list-style-type: disc !important;
     list-style-position: outside;
     padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .post-content ol {
+    list-style-type: decimal !important;
+    list-style-position: outside;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .post-content li {
@@ -42,7 +83,16 @@ const base = import.meta.env.BASE_URL;
   }
 
   .post-content li::marker {
-    color: #60a5fa; /* blue-400 */
+    color: #60a5fa;
+  }
+
+  .post-content a {
+    color: #60a5fa;
+    text-decoration: underline;
+  }
+
+  .post-content a:hover {
+    color: #93c5fd;
   }
 
   /* === CARRUSEL === */
@@ -74,28 +124,29 @@ const base = import.meta.env.BASE_URL;
 
 <main class="bg-gray-950 text-gray-100 min-h-screen">
   <div class="max-w-6xl mx-auto px-6 py-32">
-
     <h1 class="text-4xl font-bold text-center text-blue-400 mb-16">
       {title}
     </h1>
 
     <div class="grid md:grid-cols-2 gap-10">
-
       <!-- CARRUSEL -->
-      {images.length > 0 && (
-        <div class="carousel rounded-xl overflow-hidden" id="carousel">
-          {images.map((img) => (
-            <img src={`${base}${img}`} alt={title} />
-          ))}
-          <img src={`${base}${images[0]}`} alt="Imagen clonada" />
-        </div>
-      )}
+      {
+        images.length > 0 && (
+          <div class="carousel rounded-xl overflow-hidden" id="carousel">
+            {images.map((img) => (
+              <img src={`${base}${img}`} alt={title} />
+            ))}
+            <img src={`${base}${images[0]}`} alt="Imagen clonada" />
+          </div>
+        )
+      }
 
       <!-- CONTENIDO MARKDOWN -->
-      <div class="post-content bg-gray-900 rounded-xl p-6 leading-relaxed text-gray-300 space-y-4 text-justify">
+      <div
+        class="post-content bg-gray-900 rounded-xl p-6 leading-relaxed text-gray-300 space-y-4 text-justify"
+      >
         <Content />
       </div>
-
     </div>
   </div>
 </main>
