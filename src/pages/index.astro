@@ -10,7 +10,7 @@ import imagenTres from "/src/assets/blog/3.1.jpg";
 import imagenCuatro from "/src/assets/blog/4.1.webp";
 import imagenCinco from "/src/assets/blog/cinco.jpeg";
 
-/* === MISMA FUNCIÓN QUE USAS EN EL MENÚ === */
+/* === FUNCIÓN SEGURA PARA GITHUB PAGES === */
 const withBase = (path = "") =>
   `${import.meta.env.BASE_URL.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
 
@@ -74,8 +74,7 @@ const secondRow = posts.slice(3);
     <div class="grid md:grid-cols-3 gap-8 mb-8">
       {firstRow.map((post) => (
         <a
-          href={`${import.meta.env.BASE_URL}blog/${post.slug}`}
-
+          href={withBase(`blog/${post.slug}`)}
           class="group bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
         >
           <img
@@ -96,28 +95,26 @@ const secondRow = posts.slice(3);
       ))}
     </div>
 
-    <!-- FILA 2 centrada horizontalmente -->
-<div class="flex justify-center gap-8 mb-8">
-  {secondRow.map((post) => (
-    <a
-      href={`${import.meta.env.BASE_URL}blog/${post.slug}`}
-      class="group bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
-      style="flex: 1 1 calc((100%/3) - 2rem); max-width: calc((100%/3) - 2rem);"
-    >
-      <img
-        src={post.image.src}
-        alt={post.title}
-        class="w-full h-48 object-cover group-hover:scale-105 transition"
-      />
-      <div class="p-5">
-        <h2 class="text-blue-400 font-semibold mb-2">{post.title}</h2>
-        <p class="text-sm text-gray-400">{post.description}</p>
-      </div>
-    </a>
-  ))}
-</div>
-
-
+    <!-- FILA 2 -->
+    <div class="flex justify-center gap-8 mb-8">
+      {secondRow.map((post) => (
+        <a
+          href={withBase(`blog/${post.slug}`)}
+          class="group bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-blue-500/20 transition"
+          style="flex: 1 1 calc((100%/3) - 2rem); max-width: calc((100%/3) - 2rem);"
+        >
+          <img
+            src={post.image.src}
+            alt={post.title}
+            class="w-full h-48 object-cover group-hover:scale-105 transition"
+          />
+          <div class="p-5">
+            <h2 class="text-blue-400 font-semibold mb-2">{post.title}</h2>
+            <p class="text-sm text-gray-400">{post.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
 
   </div>
 </main>
